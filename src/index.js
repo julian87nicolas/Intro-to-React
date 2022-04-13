@@ -1,21 +1,34 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Grid, Row, Col } from "react-flexbox-grid";
 
-function A(props) {
-  return <p> Hola {props.nombre} </p>;
+class Contador extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      contador: 0
+    };
+  }
+
+  aumentar = () => {
+    this.setState({
+      contador: this.state.contador + 1
+    });
+  };
+
+  render() {
+    return (
+      <div>
+        <button onClick={this.aumentar}>Click Me!</button>
+        <p>{this.state.contador}</p>
+      </div>
+    );
+  }
 }
-
-function B(props) {
-  return <p> {props.nombre}: 10 </p>;
-}
-
 class App extends React.Component {
   render() {
     return (
       <div>
-        <A nombre={"Julian Camargo"} />
-        <B nombre={"Julian"} />
+        <Contador />
       </div>
     );
   }
